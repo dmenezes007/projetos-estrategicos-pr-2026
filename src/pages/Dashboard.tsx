@@ -22,7 +22,9 @@ const item = {
 };
 
 const titleOverrides: Record<string, string[]> = {
+  'gestao-inovacao': ['Gestão da', 'Inovação'],
   'lideranca-a-vista': ['Liderança', 'à Vista'],
+  'lgpd-implementada': ['LGPD', 'Implementada'],
   'uso-ia': ['Uso da IA', 'no INPI']
 };
 
