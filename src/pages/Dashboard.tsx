@@ -23,49 +23,42 @@ const item = {
 
 // Configuration for each specific card's style and layout
 const cardConfig: Record<string, {
-  colSpan: string;
   bg: string;
   text: string;
   dot: string;
   pattern: string;
 }> = {
   'gestao-inovacao': {
-    colSpan: 'md:col-span-2',
     bg: 'bg-slate-900',
     text: 'text-sky-100',
     dot: 'bg-sky-400',
     pattern: 'bg-[radial-gradient(circle_at_18%_24%,rgba(56,189,248,0.16)_0,transparent_45%),repeating-linear-gradient(135deg,rgba(148,163,184,0.10)_0,rgba(148,163,184,0.10)_1px,transparent_1px,transparent_14px)]'
   },
   'gestao-conhecimento': {
-    colSpan: 'md:col-span-1',
     bg: 'bg-slate-950',
     text: 'text-cyan-100',
     dot: 'bg-cyan-400',
     pattern: 'bg-[radial-gradient(circle_at_85%_20%,rgba(34,211,238,0.20)_0,transparent_48%),repeating-linear-gradient(45deg,rgba(148,163,184,0.08)_0,rgba(148,163,184,0.08)_1px,transparent_1px,transparent_12px)]'
   },
   'comunicacao-institucional': {
-    colSpan: 'md:col-span-1',
     bg: 'bg-slate-900',
     text: 'text-violet-100',
     dot: 'bg-violet-400',
     pattern: 'bg-[radial-gradient(circle_at_20%_85%,rgba(167,139,250,0.18)_0,transparent_50%),repeating-linear-gradient(0deg,rgba(148,163,184,0.10)_0,rgba(148,163,184,0.10)_1px,transparent_1px,transparent_16px)]'
   },
   'lideranca-a-vista': {
-    colSpan: 'md:col-span-2',
     bg: 'bg-slate-900',
     text: 'text-amber-100',
     dot: 'bg-amber-400',
     pattern: 'bg-[radial-gradient(circle_at_80%_24%,rgba(251,191,36,0.16)_0,transparent_44%),repeating-linear-gradient(120deg,rgba(148,163,184,0.09)_0,rgba(148,163,184,0.09)_1px,transparent_1px,transparent_13px)]'
   },
   'lgpd-implementada': {
-    colSpan: 'md:col-span-1',
     bg: 'bg-slate-950',
     text: 'text-emerald-100',
     dot: 'bg-emerald-400',
     pattern: 'bg-[radial-gradient(circle_at_15%_20%,rgba(52,211,153,0.18)_0,transparent_46%),repeating-linear-gradient(60deg,rgba(148,163,184,0.08)_0,rgba(148,163,184,0.08)_1px,transparent_1px,transparent_11px)]'
   },
   'uso-ia': {
-    colSpan: 'md:col-span-1',
     bg: 'bg-black',
     text: 'text-fuchsia-100',
     dot: 'bg-fuchsia-400',
@@ -87,13 +80,19 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="h-full w-full flex flex-col font-sans">
+    <div className="h-full w-full flex flex-col font-sans relative">
+      <div className="absolute inset-0 pointer-events-none z-20 hidden md:flex items-center justify-center">
+        <div className="w-28 h-28 rounded-full border border-slate-500/70 bg-slate-950/95 shadow-xl backdrop-blur-sm flex items-center justify-center">
+          <span className="text-[11px] tracking-[0.2em] uppercase text-slate-300 text-center px-3">Logo INPI</span>
+        </div>
+      </div>
+
       {/* Bento Grid Layout - Full Height */}
       <motion.div 
         variants={container}
         initial="hidden"
         animate="show"
-        className="grid grid-cols-1 md:grid-cols-4 grid-rows-6 md:grid-rows-2 gap-4 h-full w-full"
+        className="grid grid-cols-1 md:grid-cols-3 grid-rows-6 md:grid-rows-2 auto-rows-fr gap-4 h-full w-full"
       >
         {orderedIds.map((id) => {
           const project = projects.find(p => p.id === id);
@@ -107,8 +106,7 @@ export default function Dashboard() {
               to={`/projeto/${project.id}`}
               variants={item}
               className={clsx(
-                "rounded-[2rem] p-8 shadow-sm border border-slate-700/70 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group flex flex-col justify-between cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/60",
-                config.colSpan,
+                "rounded-[2rem] p-8 shadow-sm border border-slate-700/70 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group flex flex-col justify-between cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/60 h-full",
                 config.bg,
                 config.text
               )}
