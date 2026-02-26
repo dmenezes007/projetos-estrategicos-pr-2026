@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { projects } from '../data/mockData';
 import clsx from 'clsx';
 
+const MotionLink = motion(Link);
+
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -25,44 +27,49 @@ const cardConfig: Record<string, {
   bg: string;
   text: string;
   dot: string;
-  dark?: boolean;
+  pattern: string;
 }> = {
   'gestao-inovacao': {
     colSpan: 'md:col-span-2',
-    bg: 'bg-blue-50 dark:bg-blue-900/20',
-    text: 'text-blue-900 dark:text-blue-100',
-    dot: 'bg-blue-500'
+    bg: 'bg-slate-900',
+    text: 'text-sky-100',
+    dot: 'bg-sky-400',
+    pattern: 'bg-[radial-gradient(circle_at_18%_24%,rgba(56,189,248,0.16)_0,transparent_45%),repeating-linear-gradient(135deg,rgba(148,163,184,0.10)_0,rgba(148,163,184,0.10)_1px,transparent_1px,transparent_14px)]'
   },
   'gestao-conhecimento': {
     colSpan: 'md:col-span-1',
-    bg: 'bg-teal-50 dark:bg-teal-900/20',
-    text: 'text-teal-900 dark:text-teal-100',
-    dot: 'bg-teal-500'
+    bg: 'bg-slate-950',
+    text: 'text-cyan-100',
+    dot: 'bg-cyan-400',
+    pattern: 'bg-[radial-gradient(circle_at_85%_20%,rgba(34,211,238,0.20)_0,transparent_48%),repeating-linear-gradient(45deg,rgba(148,163,184,0.08)_0,rgba(148,163,184,0.08)_1px,transparent_1px,transparent_12px)]'
   },
   'comunicacao-institucional': {
     colSpan: 'md:col-span-1',
-    bg: 'bg-indigo-50 dark:bg-indigo-900/20',
-    text: 'text-indigo-900 dark:text-indigo-100',
-    dot: 'bg-indigo-500'
+    bg: 'bg-slate-900',
+    text: 'text-violet-100',
+    dot: 'bg-violet-400',
+    pattern: 'bg-[radial-gradient(circle_at_20%_85%,rgba(167,139,250,0.18)_0,transparent_50%),repeating-linear-gradient(0deg,rgba(148,163,184,0.10)_0,rgba(148,163,184,0.10)_1px,transparent_1px,transparent_16px)]'
   },
   'lideranca-a-vista': {
     colSpan: 'md:col-span-2',
-    bg: 'bg-amber-50 dark:bg-amber-900/20',
-    text: 'text-amber-900 dark:text-amber-100',
-    dot: 'bg-amber-500'
+    bg: 'bg-slate-900',
+    text: 'text-amber-100',
+    dot: 'bg-amber-400',
+    pattern: 'bg-[radial-gradient(circle_at_80%_24%,rgba(251,191,36,0.16)_0,transparent_44%),repeating-linear-gradient(120deg,rgba(148,163,184,0.09)_0,rgba(148,163,184,0.09)_1px,transparent_1px,transparent_13px)]'
   },
   'lgpd-implementada': {
     colSpan: 'md:col-span-1',
-    bg: 'bg-emerald-50 dark:bg-emerald-900/20',
-    text: 'text-emerald-900 dark:text-emerald-100',
-    dot: 'bg-emerald-500'
+    bg: 'bg-slate-950',
+    text: 'text-emerald-100',
+    dot: 'bg-emerald-400',
+    pattern: 'bg-[radial-gradient(circle_at_15%_20%,rgba(52,211,153,0.18)_0,transparent_46%),repeating-linear-gradient(60deg,rgba(148,163,184,0.08)_0,rgba(148,163,184,0.08)_1px,transparent_1px,transparent_11px)]'
   },
   'uso-ia': {
     colSpan: 'md:col-span-1',
-    bg: 'bg-slate-900 dark:bg-black',
-    text: 'text-white',
-    dot: 'bg-purple-500',
-    dark: true
+    bg: 'bg-black',
+    text: 'text-fuchsia-100',
+    dot: 'bg-fuchsia-400',
+    pattern: 'bg-[radial-gradient(circle_at_78%_82%,rgba(217,70,239,0.20)_0,transparent_50%),repeating-linear-gradient(30deg,rgba(148,163,184,0.11)_0,rgba(148,163,184,0.11)_1px,transparent_1px,transparent_14px)]'
   }
 };
 
@@ -95,20 +102,22 @@ export default function Dashboard() {
           if (!project || !config) return null;
 
           return (
-            <motion.div
+            <MotionLink
               key={id}
+              to={`/projeto/${project.id}`}
               variants={item}
               className={clsx(
-                "rounded-[2rem] p-8 shadow-sm border border-transparent hover:shadow-xl transition-all duration-300 relative overflow-hidden group flex flex-col justify-between",
+                "rounded-[2rem] p-8 shadow-sm border border-slate-700/70 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group flex flex-col justify-between cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/60",
                 config.colSpan,
                 config.bg,
-                config.text,
-                config.dark ? "dark:border-slate-800" : "border-slate-100 dark:border-slate-700"
+                config.text
               )}
             >
+              <div className={clsx("absolute inset-0 opacity-75 pointer-events-none", config.pattern)}></div>
+
               {/* Pulsating Dot */}
               <div className="absolute top-8 right-8 flex items-center gap-3">
-                <span className={clsx("text-xs font-bold uppercase tracking-wider opacity-70", config.dark ? "text-white" : "text-slate-600 dark:text-slate-300")}>
+                <span className="text-xs font-bold uppercase tracking-wider opacity-75 text-slate-300">
                   {project.status}
                 </span>
                 <div className="relative flex h-3 w-3">
@@ -119,13 +128,10 @@ export default function Dashboard() {
 
               {/* Content */}
               <div className="relative z-10 mt-4">
-                <h3 className="text-3xl md:text-4xl font-bold mb-4 leading-tight tracking-tight">
+                <h3 className="font-project-title text-6xl md:text-7xl mb-4 leading-none tracking-normal">
                   {project.title}
                 </h3>
-                <p className={clsx(
-                  "text-lg md:text-xl leading-relaxed mb-6 opacity-90 max-w-2xl",
-                  config.dark ? "text-slate-300" : "text-slate-600 dark:text-slate-300"
-                )}>
+                <p className="text-lg md:text-xl leading-relaxed mb-6 opacity-95 max-w-2xl text-slate-300">
                   {project.shortDescription}
                 </p>
               </div>
@@ -143,23 +149,19 @@ export default function Dashboard() {
                   </span>
                 </div>
                 
-                <Link 
-                  to={`/projeto/${project.id}`}
+                <span
                   className={clsx(
                     "w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 group-hover:translate-x-2",
-                    config.dark ? "bg-white text-slate-900 hover:bg-slate-200" : "bg-white dark:bg-slate-800 shadow-sm hover:shadow-md text-slate-900 dark:text-white"
+                    "bg-white text-slate-900 group-hover:bg-slate-200"
                   )}
                 >
                   <ArrowRight size={20} />
-                </Link>
+                </span>
               </div>
 
               {/* Background Decoration */}
-              <div className={clsx(
-                "absolute -bottom-24 -right-24 w-80 h-80 rounded-full blur-3xl opacity-40 pointer-events-none transition-opacity group-hover:opacity-60",
-                config.dark ? "bg-brand-accent/20" : "bg-white/60 dark:bg-white/5"
-              )}></div>
-            </motion.div>
+              <div className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full blur-3xl opacity-35 pointer-events-none transition-opacity group-hover:opacity-55 bg-white/10"></div>
+            </MotionLink>
           );
         })}
       </motion.div>
