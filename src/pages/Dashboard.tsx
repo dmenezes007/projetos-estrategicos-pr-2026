@@ -87,7 +87,7 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="h-full w-full flex flex-col font-sans relative">
+    <div className="h-full w-full flex flex-col font-sans relative overflow-y-auto md:overflow-hidden pr-1">
       <div className="absolute inset-0 pointer-events-none z-20 hidden md:flex items-center justify-center">
         <div className="w-28 h-28 rounded-full border-4 border-white bg-white shadow-xl backdrop-blur-sm flex items-center justify-center p-3">
           <img
@@ -103,7 +103,7 @@ export default function Dashboard() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="grid grid-cols-1 md:grid-cols-3 grid-rows-6 md:grid-rows-2 auto-rows-fr gap-4 h-full w-full"
+        className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 auto-rows-[minmax(0,1fr)] gap-3 md:gap-4 h-auto md:h-full w-full"
       >
         {orderedIds.map((id) => {
           const project = projects.find(p => p.id === id);
@@ -117,7 +117,7 @@ export default function Dashboard() {
               to={`/projeto/${project.id}`}
               variants={item}
               className={clsx(
-                "rounded-[2rem] p-8 shadow-sm border border-slate-700/70 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group flex flex-col justify-between cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/60 h-full",
+                "rounded-[1.5rem] md:rounded-[2rem] p-5 sm:p-6 md:p-8 shadow-sm border border-slate-700/70 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group flex flex-col justify-between cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/60 h-full min-h-[18.5rem] md:min-h-0",
                 config.bg,
                 config.text
               )}
@@ -125,8 +125,8 @@ export default function Dashboard() {
               <div className={clsx("absolute inset-0 opacity-75 pointer-events-none", config.pattern)}></div>
 
               {/* Pulsating Dot */}
-              <div className="absolute top-8 right-8 flex items-center gap-3">
-                <span className="text-xs font-bold uppercase tracking-wider opacity-75 text-slate-300">
+              <div className="absolute top-5 right-5 md:top-8 md:right-8 flex items-center gap-2 md:gap-3">
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider opacity-75 text-slate-300">
                   {project.status}
                 </span>
                 <div className="relative flex h-3 w-3">
@@ -136,8 +136,8 @@ export default function Dashboard() {
               </div>
 
               {/* Content */}
-              <div className="relative z-10 mt-4">
-                <h3 className="font-project-title text-4xl md:text-5xl mb-4 leading-none tracking-normal">
+              <div className="relative z-10 mt-2 md:mt-4">
+                <h3 className="font-project-title text-3xl sm:text-4xl md:text-5xl mb-3 md:mb-4 leading-none tracking-normal">
                   {(titleOverrides[project.id] ?? [project.title]).map((line, index) => (
                     <span key={`${project.id}-${line}-${index}`}>
                       {line}
@@ -145,31 +145,31 @@ export default function Dashboard() {
                     </span>
                   ))}
                 </h3>
-                <p className="text-lg md:text-xl leading-relaxed mb-6 opacity-95 max-w-2xl text-slate-300">
+                <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-5 md:mb-6 opacity-95 max-w-2xl text-slate-300">
                   {project.shortDescription}
                 </p>
               </div>
 
               {/* Footer / Action */}
-              <div className="relative z-10 flex items-center justify-between mt-auto pt-6 border-t border-black/5 dark:border-white/10">
-                <div className="flex items-center gap-6 text-sm opacity-80">
+              <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between mt-auto pt-4 md:pt-6 border-t border-black/5 dark:border-white/10 gap-3 sm:gap-2">
+                <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm opacity-80">
                   <span className="flex items-center gap-2 font-medium">
-                    <Calendar size={18} />
+                    <Calendar size={16} className="md:w-[18px] md:h-[18px]" />
                     {new Date(project.endDate).getFullYear()}
                   </span>
                   <span className="flex items-center gap-2 font-medium">
-                    <BarChart3 size={18} />
+                    <BarChart3 size={16} className="md:w-[18px] md:h-[18px]" />
                     {project.kpis.length} KPIs
                   </span>
                 </div>
                 
                 <span
                   className={clsx(
-                    "w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 group-hover:translate-x-2",
+                    "w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 group-hover:translate-x-2 self-end sm:self-auto",
                     "bg-white text-slate-900 group-hover:bg-slate-200"
                   )}
                 >
-                  <ArrowRight size={20} />
+                  <ArrowRight size={18} className="md:w-5 md:h-5" />
                 </span>
               </div>
 
