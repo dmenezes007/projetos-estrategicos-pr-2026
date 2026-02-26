@@ -21,17 +21,18 @@ export const projects: Project[] = [
   {
     id: 'gestao-inovacao',
     title: 'Gestão da Inovação',
-    shortDescription: 'Modernização dos processos de análise de patentes e marcas.',
+    shortDescription: 'Implantação do Sistema de Gestão da Inovação do INPI com instrumentos, processos e indicadores bem definidos',
     fullDescription: 'Implementação de novas metodologias e ferramentas tecnológicas para otimizar o fluxo de trabalho dos examinadores, reduzindo o backlog e aumentando a qualidade das concessões.',
     status: 'Execução',
     iconName: 'Lightbulb',
     image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop',
     startDate: '2024-01-15',
-    endDate: '2025-12-31',
+    endDate: '2026-12-31',
     strategicAxis: 'Eficiência Operacional',
     kpis: [
       { label: 'Redução do Backlog', value: '-15%', trend: 'up' },
-      { label: 'Tempo Médio de Análise', value: '3.5 anos', trend: 'down' }
+      { label: 'Tempo Médio de Análise', value: '3.5 anos', trend: 'down' },
+      { label: 'Produtividade por Examinador', value: '+18%', trend: 'up' }
     ],
     objectives: [
       'Reduzir o tempo de exame de patentes em 20%',
@@ -47,17 +48,18 @@ export const projects: Project[] = [
   {
     id: 'gestao-conhecimento',
     title: 'Gestão do Conhecimento',
-    shortDescription: 'Preservação e disseminação do capital intelectual do INPI.',
+    shortDescription: 'Desenvolvimento do processo de gestão do conhecimento, de forma coordenada e alinhada á estratégia institucional',
     fullDescription: 'Criação de uma plataforma centralizada para documentação técnica, treinamentos e compartilhamento de boas práticas entre os servidores.',
     status: 'Planejamento',
     iconName: 'BookOpen',
     image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=1200&auto=format&fit=crop',
     startDate: '2024-06-01',
-    endDate: '2026-06-01',
+    endDate: '2026-12-31',
     strategicAxis: 'Desenvolvimento Institucional',
     kpis: [
       { label: 'Documentos Indexados', value: '12.500', trend: 'up' },
-      { label: 'Acessos à Base', value: '450/dia', trend: 'up' }
+      { label: 'Acessos à Base', value: '450/dia', trend: 'up' },
+      { label: 'Áreas com Trilhas Ativas', value: '9', trend: 'up' }
     ],
     objectives: [
       'Digitalizar 100% do acervo histórico relevante',
@@ -73,17 +75,18 @@ export const projects: Project[] = [
   {
     id: 'comunicacao-institucional',
     title: 'Comunicação Institucional',
-    shortDescription: 'Fortalecimento da marca e transparência com a sociedade.',
+    shortDescription: 'Planejamento da contratação de comunicação institucional apta ao atendimento da necessidade real do Instituto',
     fullDescription: 'Reestruturação dos canais de comunicação digital e física para aproximar o INPI da sociedade e dos usuários do sistema de propriedade industrial.',
     status: 'Execução',
     iconName: 'Megaphone',
     image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1200&auto=format&fit=crop',
     startDate: '2023-09-01',
-    endDate: '2024-12-31',
+    endDate: '2026-12-31',
     strategicAxis: 'Transparência e Sociedade',
     kpis: [
       { label: 'Engajamento Social', value: '+45%', trend: 'up' },
-      { label: 'Satisfação do Usuário', value: '4.2/5', trend: 'up' }
+      { label: 'Satisfação do Usuário', value: '4.2/5', trend: 'up' },
+      { label: 'Campanhas Institucionais', value: '12', trend: 'up' }
     ],
     objectives: [
       'Lançar novo portal institucional',
@@ -99,17 +102,18 @@ export const projects: Project[] = [
   {
     id: 'lgpd-implementada',
     title: 'LGPD Implementada',
-    shortDescription: 'Conformidade total com a Lei Geral de Proteção de Dados.',
+    shortDescription: 'Especificação, planejamento e acompanhamento de ações de adequação dos sistemas e controles do INPI à LGPD',
     fullDescription: 'Adequação de todos os processos internos e sistemas para garantir a privacidade e segurança dos dados pessoais de servidores e usuários.',
     status: 'Concluído',
     iconName: 'ShieldCheck',
     image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop',
     startDate: '2022-01-01',
-    endDate: '2023-12-31',
+    endDate: '2026-12-31',
     strategicAxis: 'Governança e Compliance',
     kpis: [
       { label: 'Processos Mapeados', value: '100%', trend: 'neutral' },
-      { label: 'Incidentes de Segurança', value: '0', trend: 'neutral' }
+      { label: 'Incidentes de Segurança', value: '0', trend: 'neutral' },
+      { label: 'Sistemas Adequados', value: '96%', trend: 'up' }
     ],
     objectives: [
       'Mapear todos os fluxos de dados pessoais',
@@ -125,17 +129,18 @@ export const projects: Project[] = [
   {
     id: 'lideranca-a-vista',
     title: 'Liderança à Vista',
-    shortDescription: 'Painéis de gestão para tomada de decisão baseada em dados.',
+    shortDescription: 'Realização de ações projetizadas para o intencional aprimoramento da percepção da liderança exercida pela Presidência do INPI',
     fullDescription: 'Implementação de dashboards em tempo real para monitoramento de indicadores estratégicos por toda a alta gestão.',
     status: 'Execução',
     iconName: 'Users',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop',
     startDate: '2024-02-01',
-    endDate: '2025-06-30',
+    endDate: '2026-12-31',
     strategicAxis: 'Gestão Estratégica',
     kpis: [
       { label: 'Dashboards Ativos', value: '8', trend: 'up' },
-      { label: 'Tempo de Resposta', value: '-20%', trend: 'down' }
+      { label: 'Tempo de Resposta', value: '-20%', trend: 'down' },
+      { label: 'Ações de Liderança Executadas', value: '14', trend: 'up' }
     ],
     objectives: [
       'Integrar bases de dados de RH, Finanças e Operações',
@@ -150,18 +155,19 @@ export const projects: Project[] = [
   },
   {
     id: 'uso-ia',
-    title: 'Uso da IA',
-    shortDescription: 'Inteligência Artificial aplicada à análise de anterioridade.',
+    title: 'Uso da Intelegência Artificial',
+    shortDescription: 'Estrturação e consolidação de iniciativas voltadas à aplicação da inteligência artificial a diferentes processos do INPI',
     fullDescription: 'Desenvolvimento e adoção de ferramentas de IA para auxiliar na busca de anterioridade em patentes e marcas, aumentando a precisão e velocidade.',
     status: 'Planejamento',
     iconName: 'BrainCircuit',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop',
     startDate: '2024-08-01',
-    endDate: '2027-12-31',
+    endDate: '2026-12-31',
     strategicAxis: 'Inovação Tecnológica',
     kpis: [
       { label: 'Precisão da Busca', value: '98%', trend: 'up' },
-      { label: 'Tempo de Busca', value: '-40%', trend: 'down' }
+      { label: 'Tempo de Busca', value: '-40%', trend: 'down' },
+      { label: 'Processos com IA Integrada', value: '7', trend: 'up' }
     ],
     objectives: [
       'Testar 3 soluções de mercado',

@@ -23,7 +23,7 @@ const item = {
 
 const titleOverrides: Record<string, string[]> = {
   'lideranca-a-vista': ['Liderança', 'à Vista'],
-  'uso-ia': ['Uso da', 'Inteligência', 'Artificial']
+  'uso-ia': ['Uso da', 'Intelegência', 'Artificial']
 };
 
 // Configuration for each specific card's style and layout
