@@ -155,7 +155,7 @@ export const projects: Project[] = [
   },
   {
     id: 'uso-ia',
-    title: 'Uso da Intelegência Artificial',
+    title: 'Uso da IA no INPI',
     shortDescription: 'Estrturação e consolidação de iniciativas voltadas à aplicação da inteligência artificial a diferentes processos do INPI',
     fullDescription: 'Desenvolvimento e adoção de ferramentas de IA para auxiliar na busca de anterioridade em patentes e marcas, aumentando a precisão e velocidade.',
     status: 'EM EXECUÇÃO',

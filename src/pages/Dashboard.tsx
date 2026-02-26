@@ -23,7 +23,7 @@ const item = {
 
 const titleOverrides: Record<string, string[]> = {
   'lideranca-a-vista': ['Liderança', 'à Vista'],
-  'uso-ia': ['Uso da', 'Intelegência', 'Artificial']
+  'uso-ia': ['Uso da IA', 'no INPI']
 };
 
 // Configuration for each specific card's style and layout
@@ -135,7 +135,7 @@ export default function Dashboard() {
 
               {/* Content */}
               <div className="relative z-10 mt-4">
-                <h3 className="font-project-title text-5xl md:text-6xl mb-4 leading-none tracking-normal">
+                <h3 className="font-project-title text-4xl md:text-5xl mb-4 leading-none tracking-normal">
                   {(titleOverrides[project.id] ?? [project.title]).map((line, index) => (
                     <span key={`${project.id}-${line}-${index}`}>
                       {line}
