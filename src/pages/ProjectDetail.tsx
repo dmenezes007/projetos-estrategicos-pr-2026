@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, CheckCircle2, Target, TrendingUp, FileText, Download, Share2 } from 'lucide-react';
-import { projects, iconMap } from '../data/mockData';
+import { ArrowLeft, Calendar, Target, TrendingUp, FileText, Download, Mail, UserRound } from 'lucide-react';
+import { projects } from '../data/mockData';
 
 export default function ProjectDetail() {
   const { id } = useParams();
@@ -16,7 +16,77 @@ export default function ProjectDetail() {
     );
   }
 
-  const Icon = iconMap[project.iconName];
+  const nextStepByProject: Record<string, string> = {
+    'gestao-inovacao': 'Concluir a validação do fluxo de governança e iniciar o ciclo piloto com três áreas finalísticas do INPI.',
+    'gestao-conhecimento': 'Finalizar o desenho do processo corporativo e publicar a primeira trilha institucional de conhecimento.',
+    'comunicacao-institucional': 'Consolidar os requisitos técnicos e finalizar o termo de referência para contratação especializada.',
+    'lideranca-a-vista': 'Executar o próximo pacote de ações de liderança com indicadores de percepção e acompanhamento quinzenal.',
+    'lgpd-implementada': 'Priorizar os sistemas críticos pendentes e concluir o plano de adequação dos controles de dados pessoais.',
+    'uso-ia': 'Expandir a prova de conceito para novos processos e formalizar critérios de escala para soluções de IA no INPI.'
+  };
+
+  const timelineByProject: Record<string, { etapa: string; periodo: string }[]> = {
+    'gestao-inovacao': [
+      { etapa: 'Estruturação metodológica', periodo: '1º trimestre/2026' },
+      { etapa: 'Piloto com áreas selecionadas', periodo: '2º trimestre/2026' },
+      { etapa: 'Escalonamento institucional', periodo: '2º semestre/2026' }
+    ],
+    'gestao-conhecimento': [
+      { etapa: 'Mapeamento de ativos críticos', periodo: '1º trimestre/2026' },
+      { etapa: 'Implantação de trilhas e curadoria', periodo: '2º trimestre/2026' },
+      { etapa: 'Consolidação do processo corporativo', periodo: '2º semestre/2026' }
+    ],
+    'comunicacao-institucional': [
+      { etapa: 'Diagnóstico de necessidades', periodo: '1º trimestre/2026' },
+      { etapa: 'Planejamento da contratação', periodo: '2º trimestre/2026' },
+      { etapa: 'Início da execução contratual', periodo: '2º semestre/2026' }
+    ],
+    'lideranca-a-vista': [
+      { etapa: 'Planejamento das ações projetizadas', periodo: '1º trimestre/2026' },
+      { etapa: 'Execução de ciclos de liderança', periodo: '2º trimestre/2026' },
+      { etapa: 'Avaliação e ajustes de percepção', periodo: '2º semestre/2026' }
+    ],
+    'lgpd-implementada': [
+      { etapa: 'Priorização de sistemas e controles', periodo: '1º trimestre/2026' },
+      { etapa: 'Adequação técnica e processual', periodo: '2º trimestre/2026' },
+      { etapa: 'Acompanhamento e evidências finais', periodo: '2º semestre/2026' }
+    ],
+    'uso-ia': [
+      { etapa: 'Estruturação das iniciativas de IA', periodo: '1º trimestre/2026' },
+      { etapa: 'Integração com processos do INPI', periodo: '2º trimestre/2026' },
+      { etapa: 'Consolidação e escalabilidade', periodo: '2º semestre/2026' }
+    ]
+  };
+
+  const contactsByProject: Record<string, { nome: string; funcao: string; email: string }[]> = {
+    'gestao-inovacao': [
+      { nome: 'Coordenação de Inovação', funcao: 'Ponto focal do projeto', email: 'inovacao@inpi.gov.br' },
+      { nome: 'Equipe de Transformação', funcao: 'Gestão de implantação', email: 'transformacao@inpi.gov.br' }
+    ],
+    'gestao-conhecimento': [
+      { nome: 'Núcleo de Conhecimento', funcao: 'Gestão de conteúdo institucional', email: 'conhecimento@inpi.gov.br' },
+      { nome: 'Coordenação de Capacitação', funcao: 'Trilhas e treinamento', email: 'capacitacao@inpi.gov.br' }
+    ],
+    'comunicacao-institucional': [
+      { nome: 'Assessoria de Comunicação', funcao: 'Coordenação da comunicação institucional', email: 'comunicacao@inpi.gov.br' },
+      { nome: 'Gestão de Contratos', funcao: 'Suporte à contratação', email: 'contratos@inpi.gov.br' }
+    ],
+    'lideranca-a-vista': [
+      { nome: 'Gabinete da Presidência', funcao: 'Patrocínio executivo', email: 'presidencia@inpi.gov.br' },
+      { nome: 'Escritório de Projetos', funcao: 'Acompanhamento de execução', email: 'projetos@inpi.gov.br' }
+    ],
+    'lgpd-implementada': [
+      { nome: 'Encarregado de Dados', funcao: 'Governança de privacidade', email: 'dpo@inpi.gov.br' },
+      { nome: 'Coordenação de Segurança', funcao: 'Controles e monitoramento', email: 'seguranca@inpi.gov.br' }
+    ],
+    'uso-ia': [
+      { nome: 'Laboratório de IA', funcao: 'Curadoria técnica das iniciativas', email: 'ia@inpi.gov.br' },
+      { nome: 'Equipe de Sistemas', funcao: 'Integração em produção', email: 'sistemas@inpi.gov.br' }
+    ]
+  };
+
+  const projectTimeline = timelineByProject[project.id] ?? [];
+  const projectContacts = contactsByProject[project.id] ?? [];
 
   return (
     <div className="h-full overflow-y-auto">
@@ -61,6 +131,34 @@ export default function ProjectDetail() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-12">
+
+            {/* Next Step */}
+            <section>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Próximo Passo</h3>
+              <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-sm border border-slate-200 dark:border-slate-700">
+                <p className="text-slate-700 dark:text-slate-300 leading-relaxed">{nextStepByProject[project.id]}</p>
+              </div>
+            </section>
+
+            {/* Timeline */}
+            <section>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Cronograma</h3>
+              <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-sm border border-slate-200 dark:border-slate-700">
+                <ul className="space-y-4">
+                  {projectTimeline.map((item, i) => (
+                    <li key={`${item.etapa}-${i}`} className="flex items-start gap-4">
+                      <div className="mt-1 w-6 h-6 rounded-full bg-brand-accent/15 text-brand-blue flex items-center justify-center flex-shrink-0">
+                        <span className="text-xs font-bold">{i + 1}</span>
+                      </div>
+                      <div>
+                        <div className="text-slate-900 dark:text-white font-semibold">{item.etapa}</div>
+                        <div className="text-sm text-slate-500 dark:text-slate-400">{item.periodo}</div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
             
             {/* Objectives */}
             <section>
@@ -93,12 +191,22 @@ export default function ProjectDetail() {
               </div>
             </section>
 
-            {/* Gallery */}
+            {/* Contacts */}
             <section>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Galeria</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {project.gallery.map((img, i) => (
-                  <img key={i} src={img} alt={`Gallery ${i}`} className="rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 object-cover h-48 w-full" />
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Contatos</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {projectContacts.map((contact, i) => (
+                  <div key={`${contact.email}-${i}`} className="bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <div className="flex items-center gap-2 mb-2 text-slate-900 dark:text-white font-semibold">
+                      <UserRound size={16} />
+                      {contact.nome}
+                    </div>
+                    <div className="text-sm text-slate-500 dark:text-slate-400 mb-2">{contact.funcao}</div>
+                    <div className="text-sm text-brand-blue dark:text-brand-accent flex items-center gap-2">
+                      <Mail size={14} />
+                      {contact.email}
+                    </div>
+                  </div>
                 ))}
               </div>
             </section>
