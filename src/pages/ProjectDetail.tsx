@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, Target, TrendingUp, FileText, Download, Mail, UserRound } from 'lucide-react';
+import { ArrowLeft, Calendar, Target, TrendingUp, FileText, Download, Mail, UserRound, Footprints, Milestone, ContactRound, BarChart3, FolderOpen } from 'lucide-react';
 import { projects } from '../data/mockData';
 
 export default function ProjectDetail() {
@@ -134,7 +134,9 @@ export default function ProjectDetail() {
 
             {/* Next Step */}
             <section>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Próximo Passo</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                <Footprints className="text-brand-accent" /> Próximo Passo
+              </h3>
               <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-sm border border-slate-200 dark:border-slate-700">
                 <p className="text-slate-700 dark:text-slate-300 leading-relaxed">{nextStepByProject[project.id]}</p>
               </div>
@@ -142,7 +144,9 @@ export default function ProjectDetail() {
 
             {/* Timeline */}
             <section>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Cronograma</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                <Milestone className="text-brand-accent" /> Cronograma
+              </h3>
               <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-sm border border-slate-200 dark:border-slate-700">
                 <ul className="space-y-4">
                   {projectTimeline.map((item, i) => (
@@ -193,7 +197,9 @@ export default function ProjectDetail() {
 
             {/* Contacts */}
             <section>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Contatos</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                <ContactRound className="text-brand-accent" /> Contatos
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {projectContacts.map((contact, i) => (
                   <div key={`${contact.email}-${i}`} className="bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm">
@@ -217,7 +223,9 @@ export default function ProjectDetail() {
             
             {/* KPIs */}
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-6">Indicadores Chave</h3>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                <BarChart3 className="text-brand-accent" size={18} /> Indicadores Chave
+              </h3>
               <div className="space-y-6">
                 {project.kpis.map((kpi, i) => (
                   <div key={i} className="relative">
@@ -247,7 +255,9 @@ export default function ProjectDetail() {
 
             {/* Documents */}
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Documentos</h3>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                <FolderOpen className="text-brand-accent" size={18} /> Documentos
+              </h3>
               <div className="space-y-3">
                 {[1, 2].map((_, i) => (
                   <div key={i} className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors group cursor-pointer border border-transparent hover:border-slate-200">
