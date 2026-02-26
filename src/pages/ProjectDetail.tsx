@@ -41,7 +41,7 @@ export default function ProjectDetail() {
             <div className="flex items-center gap-3 mb-6">
               <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
                 project.status === 'Concluído' ? 'bg-green-500/20 text-green-300 border border-green-500/30' :
-                project.status === 'Execução' ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30' :
+                project.status === 'EM EXECUÇÃO' ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30' :
                 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
               }`}>
                 {project.status}

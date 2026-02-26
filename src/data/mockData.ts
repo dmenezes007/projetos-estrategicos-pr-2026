@@ -5,7 +5,7 @@ export interface Project {
   title: string;
   shortDescription: string;
   fullDescription: string;
-  status: 'Planejamento' | 'Execução' | 'Concluído';
+  status: 'EM EXECUÇÃO';
   iconName: string;
   image: string;
   startDate: string;
@@ -23,7 +23,7 @@ export const projects: Project[] = [
     title: 'Gestão da Inovação',
     shortDescription: 'Implantação do Sistema de Gestão da Inovação do INPI com instrumentos, processos e indicadores bem definidos',
     fullDescription: 'Implementação de novas metodologias e ferramentas tecnológicas para otimizar o fluxo de trabalho dos examinadores, reduzindo o backlog e aumentando a qualidade das concessões.',
-    status: 'Execução',
+    status: 'EM EXECUÇÃO',
     iconName: 'Lightbulb',
     image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop',
     startDate: '2024-01-15',
@@ -50,7 +50,7 @@ export const projects: Project[] = [
     title: 'Gestão do Conhecimento',
     shortDescription: 'Desenvolvimento do processo de gestão do conhecimento, de forma coordenada e alinhada á estratégia institucional',
     fullDescription: 'Criação de uma plataforma centralizada para documentação técnica, treinamentos e compartilhamento de boas práticas entre os servidores.',
-    status: 'Planejamento',
+    status: 'EM EXECUÇÃO',
     iconName: 'BookOpen',
     image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=1200&auto=format&fit=crop',
     startDate: '2024-06-01',
@@ -77,7 +77,7 @@ export const projects: Project[] = [
     title: 'Comunicação Institucional',
     shortDescription: 'Planejamento da contratação de comunicação institucional apta ao atendimento da necessidade real do Instituto',
     fullDescription: 'Reestruturação dos canais de comunicação digital e física para aproximar o INPI da sociedade e dos usuários do sistema de propriedade industrial.',
-    status: 'Execução',
+    status: 'EM EXECUÇÃO',
     iconName: 'Megaphone',
     image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1200&auto=format&fit=crop',
     startDate: '2023-09-01',
@@ -104,7 +104,7 @@ export const projects: Project[] = [
     title: 'LGPD Implementada',
     shortDescription: 'Especificação, planejamento e acompanhamento de ações de adequação dos sistemas e controles do INPI à LGPD',
     fullDescription: 'Adequação de todos os processos internos e sistemas para garantir a privacidade e segurança dos dados pessoais de servidores e usuários.',
-    status: 'Concluído',
+    status: 'EM EXECUÇÃO',
     iconName: 'ShieldCheck',
     image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop',
     startDate: '2022-01-01',
@@ -131,7 +131,7 @@ export const projects: Project[] = [
     title: 'Liderança à Vista',
     shortDescription: 'Realização de ações projetizadas para o intencional aprimoramento da percepção da liderança exercida pela Presidência do INPI',
     fullDescription: 'Implementação de dashboards em tempo real para monitoramento de indicadores estratégicos por toda a alta gestão.',
-    status: 'Execução',
+    status: 'EM EXECUÇÃO',
     iconName: 'Users',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop',
     startDate: '2024-02-01',
@@ -158,7 +158,7 @@ export const projects: Project[] = [
     title: 'Uso da Intelegência Artificial',
     shortDescription: 'Estrturação e consolidação de iniciativas voltadas à aplicação da inteligência artificial a diferentes processos do INPI',
     fullDescription: 'Desenvolvimento e adoção de ferramentas de IA para auxiliar na busca de anterioridade em patentes e marcas, aumentando a precisão e velocidade.',
-    status: 'Planejamento',
+    status: 'EM EXECUÇÃO',
     iconName: 'BrainCircuit',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop',
     startDate: '2024-08-01',
