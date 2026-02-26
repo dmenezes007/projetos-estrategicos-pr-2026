@@ -82,8 +82,12 @@ export default function Dashboard() {
   return (
     <div className="h-full w-full flex flex-col font-sans relative">
       <div className="absolute inset-0 pointer-events-none z-20 hidden md:flex items-center justify-center">
-        <div className="w-28 h-28 rounded-full border border-slate-500/70 bg-slate-950/95 shadow-xl backdrop-blur-sm flex items-center justify-center">
-          <span className="text-[11px] tracking-[0.2em] uppercase text-slate-300 text-center px-3">Logo INPI</span>
+        <div className="w-28 h-28 rounded-full border-4 border-white bg-slate-950/95 shadow-xl backdrop-blur-sm flex items-center justify-center p-3">
+          <img
+            src="/logo_inpi_azul_fundo_transparente.png"
+            alt="Logo do INPI"
+            className="w-full h-full object-contain"
+          />
         </div>
       </div>
 
@@ -126,7 +130,7 @@ export default function Dashboard() {
 
               {/* Content */}
               <div className="relative z-10 mt-4">
-                <h3 className="font-project-title text-6xl md:text-7xl mb-4 leading-none tracking-normal">
+                <h3 className="font-project-title text-5xl md:text-6xl mb-4 leading-none tracking-normal">
                   {project.title}
                 </h3>
                 <p className="text-lg md:text-xl leading-relaxed mb-6 opacity-95 max-w-2xl text-slate-300">

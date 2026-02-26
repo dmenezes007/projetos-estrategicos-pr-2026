@@ -51,7 +51,7 @@ export default function ProjectDetail() {
               </span>
             </div>
 
-            <h1 className="font-project-title text-7xl md:text-8xl mb-6 leading-none tracking-normal">{project.title}</h1>
+            <h1 className="font-project-title text-6xl md:text-7xl mb-6 leading-none tracking-normal">{project.title}</h1>
             <p className="text-lg md:text-xl text-slate-300 max-w-3xl leading-relaxed">
               {project.fullDescription}
             </p>
